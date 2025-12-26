@@ -1,0 +1,12 @@
+# Node modules
+node_modules/
+
+# Model files / folders
+model/
+model.js
+
+# Environment variables
+.env
+
+# Log files
+*.log
