@@ -1,0 +1,65 @@
+
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/nav') %>
+
+  <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-7xl">
+    <h2 class="text-3xl text-red-500 font-bold text-center mb-10">
+      Hey Host! Here are your homes:
+    </h2>
+
+    <% if (registeredHomes && registeredHomes.length > 0) { %>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <% registeredHomes.forEach(home => { %>
+          <li class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+            
+            <div class="overflow-hidden rounded-t-2xl h-48 w-full">
+              <img src="<%= home.photoUrl %>" alt="<%= home.houseName %>" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            </div>
+            
+            <div class="p-4">
+              <h2 class="text-lg font-semibold text-gray-800">
+                <%= home.houseName %>
+              </h2>
+              
+              <p class="text-sm text-gray-500 mt-1">
+                <%= home.location %>
+              </p>
+              
+              <div class="flex justify-between items-center mt-4">
+                <span class="text-red-500 font-semibold">
+                  ₹ <%= home.price %> / night
+                </span>
+                <span class="text-yellow-500 text-sm flex items-center gap-1">
+                  ★ <%= home.rating %>
+                </span>
+              </div>
+              
+              <div class="mt-5 flex gap-3">
+                <a href="/host/edit-home/<%= home.id %>?editing=true" class="bg-blue-500 text-white text-center px-4 py-2 rounded-md font-medium text-sm flex-1 hover:bg-blue-600">
+                  EDIT
+                </a>
+                
+                <form action="/host/delete-home" method="POST" class="flex-1">
+                  <input type="hidden" name="homeId" value="<%= home.id %>">
+                  <button type="submit" class="bg-red-500 text-white w-full px-4 py-2 rounded-md font-medium text-sm hover:bg-red-600">
+                    DELETE
+                  </button>
+                </form>
+              </div>
+
+            </div>
+          </li>
+        <% }) %> </ul>
+    <% } else { %>
+      <div class="text-center py-12">
+        <h3 class="text-xl text-gray-600 font-semibold">No homes found!</h3>
+        <p class="text-gray-400 mt-2">Please go to 'Add Home' to register a new property.</p>
+      </div>
+    <% } %>
+  </main>
+
+</body>
+</html>

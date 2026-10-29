@@ -1,11 +1,12 @@
 {
   "name": "airbnb-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project is built using Node.js and Express.js and follows backend concepts taught in lectures.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "tailwind": "tailwindcss -i ./views/input.css -o ./public/output.css --watch",
+    "start": "nodemon app.js & npm run tailwind"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,16 @@
   },
   "dependencies": {
     "body-parser": "^2.2.1",
-    "express": "^5.2.1"
-  }
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "mysql2": "^3.24.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salonisingh66/airbnb-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/salonisingh66/airbnb-project/issues"
+  },
+  "homepage": "https://github.com/salonisingh66/airbnb-project#readme"
 }
